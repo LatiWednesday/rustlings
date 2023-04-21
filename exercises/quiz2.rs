@@ -18,7 +18,7 @@
 // - The output element is going to be a Vector of strings.
 // No hints this time!
 
-// I AM NOT DONE
+
 
 pub enum Command {
     Uppercase,
@@ -36,8 +36,19 @@ mod my_module {
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
             match command {
-                Command::Uppercase => {output = string.to_uppercase()},
-                Command::Trim -> 
+                Command::Uppercase => {
+                    output.push(string.to_uppercase())
+                },
+                Command::Trim => {
+                    output.push(string.trim().into())
+                }
+                Command::Append(size) => {
+                    let mut appended_string :String = string.clone();
+                    for _ in 0..*size {
+                        appended_string += "bar";
+                    }
+                    output.push(appended_string.to_owned())
+                }
             }
             
         }
